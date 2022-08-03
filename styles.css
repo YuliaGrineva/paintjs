@@ -11,8 +11,8 @@ padding-top: 50px 0px;
 
 .canvas {
     margin-top: 30px;
-    width: 60%;
-    height: 60vh;
+    width: 600px;
+    height: 600px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 6px #888888, 0 1px 3px rgba(0, 0, 0, 0.08);
