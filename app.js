@@ -6,7 +6,9 @@ const mode = document.getElementById("mode");
 const save = document.getElementById("save");
 
 canvas.height = 600;
-canvas.width = 600;
+canvas.width = 1000;
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 const initialColor = "rgb(9, 9, 9)";
 
@@ -47,12 +49,17 @@ function handleCanvasClick() {
     }
 }
 
+function handleContextMenu(e) {
+    e.preventDefault();
+}
+
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mousedown", onMouseDown);
     canvas.addEventListener("mouseleave", stopPainting);
     canvas.addEventListener("click", handleCanvasClick);
+    canvas.addEventListener("contextmenu", handleContextMenu);
 }
 
 Array.from(colors).forEach((color) =>
@@ -86,4 +93,16 @@ function handleModeClick() {
 
 if (mode) {
     mode.addEventListener("click", handleModeClick);
+}
+
+function handleSaveClick(){   
+    const image = canvas.toDataURL();
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "paintJS";
+    link.click();
+}
+
+if (save){
+    save.addEventListener("click", handleSaveClick);
 }
